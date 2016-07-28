@@ -1,0 +1,1 @@
+Generic living style guide template using gulp
