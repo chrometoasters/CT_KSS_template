@@ -1,0 +1,16 @@
+{
+  "name": "ct__kss-node-template-gulp",
+  "version": "0.0.1",
+  "description": "CT template for kss-node.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "less": "./node_modules/.bin/lessc --verbose --compress public/kss.less public/kss.css"
+  },
+  "devDependencies": {
+    "less": "^2.1.1"
+  }
+}

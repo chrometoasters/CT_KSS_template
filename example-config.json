@@ -1,0 +1,15 @@
+{
+  "template": "../node_modules/ct__kss-node-template/",
+  "helpers": "../node_modules/ct__kss-node-template/helpers",
+  "custom": [
+    "custom-property"
+  ],
+  "source": [
+    "../dev/templates"
+  ],
+  "destination":  "../dev_build/styleguide/",
+  "css": [
+    "../css/main.css"
+  ],
+  "homepage": "styleguideHomepage.md"
+}

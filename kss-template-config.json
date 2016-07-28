@@ -1,8 +1,0 @@
-{
-    "custom": [
-        "ct-markup-notes",
-        "ct-js-notes",
-        "ct-wireframe"
-    ],
-    "helpers": "node_modules/ct__kss-node-template/helpers"
-}
