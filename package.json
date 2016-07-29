@@ -8,11 +8,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "less": "./node_modules/.bin/lessc --verbose --compress public/kss.less public/kss.css"
+    "less": "lessc --verbose --compress public/less/kss.less public/css/kss.css"
   },
-  "dependencies": {
-    "less": "^2.1.1",
-    "jquery": "^1.12.4",
-    "jquery-ui": "^1.12.0"
+  "devDependencies": {
+    "less": "^2.1.1"
   }
 }
