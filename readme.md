@@ -4,17 +4,6 @@
 
 - Use of kss-node in parent project to generate living styleguide
 
-## Setup and modifications
-
-````bash
-npm install
-````
-
-- Update styles
-````bash
-npm run less
-````
-
 ## Setup
 
 1. Include a reference to this repo in the parent project's package.json.
@@ -28,5 +17,3 @@ kss-node --config {path-to-file}/{name-of-kss-config.json}
 ## Special features
 
 ### Responsive Wrapper
-
-...

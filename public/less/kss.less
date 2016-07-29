@@ -3,7 +3,7 @@
 // ------------------------------------------------------------------------------
 @kss-colors-background : #fff;
 @kss-colors-foreground : #444;
-@kss-colors-heading : #111;
+@kss-colors-heading : #222;
 @kss-colors-quotes : #666;
 @kss-colors-link : #0645ad;
 @kss-colors-link-visited : #0645ad;
@@ -51,6 +51,7 @@ monospace;
     }
     p {
         margin: (@kss-vertical-rhythm/2) 0 @kss-vertical-rhythm 0;
+        color: @kss-colors-foreground;
     }
     h1,
     h2,
@@ -70,6 +71,7 @@ monospace;
     }
     h1 {
         font-size: @kss-font-size * 2.5;
+        margin-top: 50px;
     }
     h2 {
         font-size: @kss-font-size * 2.25;
@@ -107,11 +109,13 @@ monospace;
     samp {
         font-family: @kss-font-code;
         color: mix(@kss-colors-foreground, @kss-colors-heading, 50%);
-        font-size: 1em;
+        font-size: 14px;
+        line-height: 1.4;
     }
     pre {
         white-space: pre;
         overflow: scroll;
+        padding: 6px 0;
     }
     ins {
         color: @kss-colors-heading;
@@ -212,7 +216,7 @@ monospace;
 #kss-node {
     margin: 0;
     padding: 20px;
-    background: #fff;
+    background: #fafafa;
     @media screen and (min-width: 769px) {
         padding: 0;
         /* Old browsers */
@@ -228,7 +232,7 @@ monospace;
         /* IE10+ */
         background: -ms-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y, -ms-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
         /* W3C */
-        background: linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y, linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
+        background: linear-gradient(to right, #fafafa, #fafafa 50%, #fafafa 100%) 20% 0 ~"/ 10px 1px" repeat-y, linear-gradient(to right, #fafafa, #fafafa 20%, #fff 20%) 0 0 ~"/ 100% 1px";
         .kss-main,
         .kss-sidebar {
             float: left;
@@ -242,7 +246,7 @@ monospace;
         @media screen and (min-width: 769px) {
             width: 80%;
             margin-left: 20%;
-            padding: 0 20px 0 30px;
+            padding: 0 100px 0;
         }
     }
     .kss-sidebar {
@@ -325,10 +329,10 @@ monospace;
     iframe {
         width: 100%;
         border: 1px solid #ddd;
-        height: 300px;
+        height: 100%;
     }
     .kss-section {
-        max-width: 48em;
+        max-width: 100%;
         margin-bottom: (@kss-vertical-rhythm * 2);
     }
     .kss-title {
@@ -404,19 +408,20 @@ monospace;
     .kss-modifier__example {
         clear: left;
         padding: 1px 0; // Contain the example's margins.
-        margin: 0 0 (@kss-vertical-rhythm - 1px) 0;
+        margin: 0 0 (@kss-vertical-rhythm * 2) 0;
         &:last-child {
             margin: 0;
         }
     }
     .kss-resizable {
+        width: 768px;
         position: relative;
     }
     .kss-resizer {
         position: absolute;
         width: 21px;
         right: -32px;
-        background: #000;
+        background: #666;
         color: #fff;
         font-size: 23px;
         display: inline-block;
@@ -427,8 +432,11 @@ monospace;
         top: 50%;
         margin-top: -24px;
         text-align: center;
+        transition: background linear .1s;
+
         &:hover {
             cursor: ew-resize;
+            background: #2d2d2d;
         }
         &:after {
             content: '||'
@@ -465,115 +473,97 @@ monospace;
     // ------------------------------------------------------------------------------
     /* Pretty printing styles. Used with prettify.js. */
     /* SPAN elements with the classes below are added by prettyprint. */
+    .prettyprint {
+        background: #2d2d2d;
+        font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
+        border: 0 !important;
+    }
+
     .pln {
-        color: #000
+        color: #cccccc;
     }
-    /* plain text */
-    .str {
-        color: #080
-    }
-    /* string content */
-    .kwd {
-        color: #008
-    }
-    /* a keyword */
-    .com {
-        color: #800
-    }
-    /* a comment */
-    .typ {
-        color: #606
-    }
-    /* a type name */
-    .lit {
-        color: #066
-    }
-    /* a literal value */
-    /* punctuation, lisp open bracket, lisp close bracket */
-    .pun,
-    .opn,
-    .clo {
-        color: #660
-    }
-    .tag {
-        color: #008
-    }
-    /* a markup tag name */
-    .atn {
-        color: #606
-    }
-    /* a markup attribute name */
-    .atv {
-        color: #080
-    }
-    /* a markup attribute value */
-    .dec,
-    .var {
-        color: #606
-    }
-    /* a declaration; a variable name */
-    .fun {
-        color: red
-    }
-    /* a function name */
-    /* Use higher contrast and text-weight for printable form. */
-    @media print,
-    projection {
-        .str {
-            color: #060
-        }
-        .kwd {
-            color: #006;
-            font-weight: bold
-        }
-        .com {
-            color: #600;
-            font-style: italic
-        }
-        .typ {
-            color: #404;
-            font-weight: bold
-        }
-        .lit {
-            color: #044
-        }
-        .pun,
-        .opn,
-        .clo {
-            color: #440
-        }
-        .tag {
-            color: #006;
-            font-weight: bold
-        }
-        .atn {
-            color: #404
-        }
-        .atv {
-            color: #060
-        }
-    }
+
+
     /* Specify class=linenums on a pre to get line numbering */
+
     ol.linenums {
         margin: 0;
-        padding: 0 0 3px 0;
+        padding: 0;
         list-style-type: none;
-        li {
-            min-height: @kss-vertical-rhythm;
-            border-bottom: 1px solid #eee;
-            padding: 0 10px;
-            background: #fff;
-            &:first-child {
-                padding-top: 3px;
-            }
+    }
+
+    li.L0,
+    li.L1,
+    li.L2,
+    li.L3,
+    li.L4,
+    li.L5,
+    li.L6,
+    li.L7,
+    li.L8,
+    li.L9 {
+        padding-left: 1em;
+        background-color: #2d2d2d;
+        list-style-type: decimal;
+    }
+
+    @media screen {
+        /* string content */
+        .str {
+            color: #99cc99;
         }
-        /* Alternate shading for lines */
-        li.L0,
-        li.L2,
-        li.L4,
-        li.L6,
-        li.L8 {
-            background: #fcfcfc;
+        /* keyword */
+        .kwd {
+            color: #cc99cc;
+        }
+        /* comment */
+        .com {
+            color: #999999;
+        }
+        /* type name */
+        .typ {
+            color: #6699cc;
+        }
+        /* literal value */
+        .lit {
+            color: #f99157;
+        }
+        /* punctuation */
+        .pun {
+            color: #cccccc;
+        }
+        /* lisp open bracket */
+        .opn {
+            color: #cccccc;
+        }
+        /* lisp close bracket */
+        .clo {
+            color: #cccccc;
+        }
+        /* markup tag name */
+        .tag {
+            color: #f2777a;
+        }
+        /* markup attribute name */
+        .atn {
+            color: #f99157;
+        }
+        /* markup attribute value */
+        .atv {
+            color: #66cccc;
+        }
+        /* declaration */
+        .dec {
+            color: #f99157;
+        }
+        /* variable name */
+        .var {
+            color: #f2777a;
+        }
+        /* function name */
+        .fun {
+            color: #6699cc;
         }
     }
+
 }

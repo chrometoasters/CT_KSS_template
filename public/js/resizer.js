@@ -24,12 +24,19 @@
             startY = e.clientY;
             startWidth = parseInt(document.defaultView.getComputedStyle(currentWrapper).width, 10);
             startHeight = parseInt(document.defaultView.getComputedStyle(currentWrapper).height, 10);
-            document.documentElement.addEventListener('mousemove', doDrag, false);
+            document.documentElement.addEventListener('mousemove', doDragHoriz, false);
             document.documentElement.addEventListener('mouseup', stopDrag, false);
         }
 
-        function doDrag(e) {
+        function doDragHoriz(e) {
             currentWrapper.style.width = (startWidth + e.clientX - startX) + 'px';
+            currentWrapper.style.height = (startHeight + e.clientY - startY) + 'px';
+            resizerWidth.innerHTML = (startWidth + e.clientX - startX) + 'px';
+        }
+
+        function doDragVert(e) {
+            currentWrapper.style.width = (startWidth + e.clientX - startX) + 'px';
+            currentWrapper.style.height = (startHeight + e.clientY - startY) + 'px';
             resizerWidth.innerHTML = (startWidth + e.clientX - startX) + 'px';
         }
 
