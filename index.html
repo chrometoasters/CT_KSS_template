@@ -9,32 +9,30 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{options.title}}</title>
+    <title>NZQA styleguide</title>
     <meta name="description" content="">
     <meta name="generator" content="kss-node">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="public/css/kss.css"> {{{styles}}}
+    <link rel="stylesheet" href="public/css/kss.css">
 </head>
 
 <body id="kss-node">
     <div class="kss-sidebar kss-style">
         <header class="kss-header">
-            <h1 class="kss-doc-title">{{options.title}}</h1>
-            <h2>{{foo}}</h2>
-            <h3></h3>
+            <img class="kss-chrome-logo" src="public/images/ct_logo_bandw.png" alt="">
+            <h1 class="kss-doc-title">NZQA styleguide</h1>
         </header>
         <nav class="kss-nav">
-            <ul class="kss-nav__menu">
+            <ul class="kss-nav__menu sticky-item">
                 <li class="kss-nav__menu-item">
                     <a href="./">
-                        <span class="kss-nav__ref">0</span
-><span class="kss-nav__name">Overview</span>
+                        <span class="kss-nav__name">Overview</span>
                     </a>
                 </li>
                 {{#eachRoot}}
                 <li class="kss-nav__menu-item">
                     <a href="section-{{referenceURI}}.html">
-                        <span class="kss-nav__ref">{{#ifNumeric reference}}{{reference}}{{else}}{{autoincrement}}{{/ifNumeric}}</span
+                        <span class="kss-nav__ref">{{#ifNumeric reference}}{{reference}}{{else}}{{autoincrement}}{{/ifNumeric}} &ndash;</span
           ><span class="kss-nav__name">{{header}}</span>
                     </a>
                     {{#ifReference ../rootName}}
@@ -59,7 +57,9 @@
         <div id="kssref-0" class="kss-section kss-section--depth-0 kss-overview kss-style">
             {{{homepage}}}
         </div>
-        {{else}} {{! Display each section, in order. The "root" element comes first in this loop, and can be detected using the "#ifDepth 1" block as seen below. }} {{#eachSection rootName}} {{#ifDepth 1}}
+        {{else}} {{! Display each section, in order. The "root" element comes first in this loop, and can be detected using the "#ifDepth 1" block as seen below. }}
+
+        {{#eachSection rootName}} {{#ifDepth 1}}
         <div id="kssref-{{referenceURI}}" class="kss-section kss-section--depth-{{depth}}">
             {{else}}
             <section id="kssref-{{referenceURI}}" class="kss-section kss-section--depth-{{depth}}">
@@ -98,55 +98,75 @@
                         {{{description}}}
                     </div>
                     {{/if}}
-                </div>
-                {{#if markup}} {{{custom-property}}}
-                <div class="kss-modifier__wrapper">
-                    <div class="kss-modifier__heading kss-style">
-                        Example{{#if modifiers}}s{{/if}}
-                    </div>
-                    {{#if modifiers}}
-                    <div class="kss-modifier__default-name kss-style">
-                        Default styling
-                    </div>
+
+                    {{#if design-doc}}
+                        <div>&bull; <a href="{{design-doc}}">Design documentation</a></div>
                     {{/if}}
-                    <div class="kss-modifier__example kss-resizable">
-                        <iframe srcdoc='{{iframedMarkup}}'>
-                             <p>Your browser does not support iframes.</p>
-                        </iframe>
-                    </div>
-                    {{#eachModifier}}
-                    <div class="kss-modifier__name kss-style">
-                        {{name}}
-                    </div>
-                    <div class="kss-modifier__description kss-style">
-                        {{{description}}}
-                    </div>
-                    <div class="kss-modifier__example kss-resizable">
-                        <iframe srcdoc='{{iframedMarkup}}' width="100%">
-                             <p>Your browser does not support iframes.</p>
-                        </iframe>
-                    </div>
-                    {{/eachModifier}}
+                    {{#if ux-doc}}
+                        <div>&bull; <a href="{{ux-doc}}">UX documentation</a></div>
+                    {{/if}}
                 </div>
-                <div class="kss-markup kss-style">
-                    <pre class="prettyprint linenums lang-html"><code data-language="html">{{markup}}</code></pre>
-                </div>
+                {{#if markup}}
+                    {{#if list-page}}
+                        {{{markup}}}
+                    {{else}}
+                        <div class="kss-modifier__wrapper kss-style">
+                            <h2 class="kss-modifier__heading kss-style">
+                                Example{{#if modifiers}}s{{/if}}
+                            </h2>
+                            {{#if modifiers}}
+                            <div class="kss-modifier__default-name kss-style">
+                                Default styling
+                            </div>
+                            {{/if}}
+                            <div class="kss-modifier__example kss-resizable">
+                                <div class="kss-style kss-iframe-dimension">
+                                    <button class="kss-style kss-resize-prev"><<</button><input class="kss-style kss-width" type="number" pattern="[0-9]{10}"> x <input class="kss-style kss-height" type="number" pattern="[0-9]{10}"><button class="kss-style kss-resize-next">>></button>
+                                </div>
+                                <iframe srcdoc='{{iframedMarkup}}'>
+                                     <p>Your browser does not support iframes.</p>
+                                </iframe>
+                            </div>
+                            {{#eachModifier}}
+                            <div class="kss-modifier__name kss-style">
+                                {{name}}
+                            </div>
+                            <div class="kss-modifier__description kss-style">
+                                {{{description}}}
+                            </div>
+                            <div class="kss-modifier__example kss-resizable">
+                                <div class="kss-style kss-iframe-dimension">
+                                    <button class="kss-style kss-resize-prev"><<</button><input class="kss-style kss-width" type="number" pattern="[0-9]{10}"> x <input class="kss-style kss-height" type="number" pattern="[0-9]{10}"><button class="kss-style kss-resize-next">>></button>
+                                </div>
+                                <iframe srcdoc='{{iframedMarkup}}' width="100%">
+                                     <p>Your browser does not support iframes.</p>
+                                </iframe>
+                            </div>
+                            {{/eachModifier}}
+                        </div>
+                        <div class="kss-markup kss-style">
+                            <p class="kss-code__name kss-style">Code <></p>
+                            <pre class="prettyprint linenums lang-html"><code data-language="html">{{markup}}</code></pre>
+                        </div>
+                    {{/if}}
                 {{/if}} {{#ifDepth 1}}
         </div>
         {{else}}
         </section>
         {{/ifDepth}} {{/eachSection}} {{/if}}
     </article>
+    <!-- Project specific scripts -->
+    {{{scripts}}}
+    <!-- Automatically generated using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
     <!-- Styleguide scripts -->
     <script src="public/js/kss.js"></script>
     <script src="public/js/prettify.js"></script>
     <script src="public/js/resizer.js"></script>
+    <script src="public/js/stickyfill.js"></script>
+    <script src="public/js/smoothscroll.js"></script>
     <script>
     prettyPrint();
     </script>
-    <!-- Project specific scripts -->
-    {{{scripts}}}
-    <!-- Automatically generated using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
 </body>
 
 </html>

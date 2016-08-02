@@ -5,12 +5,12 @@
 @kss-colors-foreground : #444;
 @kss-colors-heading : #222;
 @kss-colors-quotes : #666;
-@kss-colors-link : #0645ad;
-@kss-colors-link-visited : #0645ad;
-@kss-colors-link-hover : lighten(@kss-colors-link, 20%);
+@kss-colors-link : #4183c4;
+@kss-colors-link-visited : #4183c4;
+@kss-colors-link-hover : #008cff;
 @kss-colors-link-active : #faa700;
-@kss-font-body : Helvetica,
-'Helvetica Neue',
+@kss-font-body : 'Helvetica Neue',
+Helvetica,
 Arial,
 sans-serif;
 @kss-font-code : Menlo,
@@ -33,16 +33,14 @@ monospace;
         color: @kss-colors-link;
         text-decoration: none;
         transition-property: color;
-        transition-duration: 0.5s;
+        transition-duration: 0.1s;
         &:visited {
             color: @kss-colors-link-visited;
         }
         &:hover,
         &:focus {
             color: @kss-colors-link-hover;
-        }
-        &:active {
-            color: @kss-colors-link-active;
+            text-decoration: underline;
         }
         &:hover,
         &:active {
@@ -59,7 +57,7 @@ monospace;
     h4,
     h5,
     h6 {
-        margin: @kss-vertical-rhythm 0 0 0;
+        margin: 25px 0 40px 0;
         font-family: @kss-font-body;
         color: @kss-colors-heading;
         line-height: 1.15em;
@@ -71,7 +69,7 @@ monospace;
     }
     h1 {
         font-size: @kss-font-size * 2.5;
-        margin-top: 50px;
+        margin-top: 40px;
     }
     h2 {
         font-size: @kss-font-size * 2.25;
@@ -216,45 +214,39 @@ monospace;
 #kss-node {
     margin: 0;
     padding: 20px;
-    background: #fafafa;
+
+    * {
+        box-sizing: border-box;
+    }
+
     @media screen and (min-width: 769px) {
         padding: 0;
-        /* Old browsers */
-        background: #eee;
-        /* FF3.6+ */
-        background: -webkit-linear-gradient(left, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y, -webkit-linear-gradient(left, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-        /* Chrome, Safari4+ */
-        background: -webkit-gradient(linear, left top, right top, color-stop(0%, #eee), color-stop(50%, #e5e5e5), color-stop(100%, #d7d7d7)) 20% 0 ~"/ 10px 1px" repeat-y, -webkit-gradient(linear, left top, right top, color-stop(0%, #eee), color-stop(20%, #eee), color-stop(20%, #fff)) 0 0 ~"/ 100% 1px";
-        /* Chrome10+, Safari5.1+ */
-        background: -webkit-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y, -webkit-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-        /* Opera 11.10+ */
-        background: -o-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y, -o-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-        /* IE10+ */
-        background: -ms-linear-gradient(to right, #eee, #e5e5e5 50%, #d7d7d7 100%) 20% 0 ~"/ 10px 1px" repeat-y, -ms-linear-gradient(to right, #eee, #eee 20%, #fff 20%) 0 0 ~"/ 100% 1px";
-        /* W3C */
-        background: linear-gradient(to right, #fafafa, #fafafa 50%, #fafafa 100%) 20% 0 ~"/ 10px 1px" repeat-y, linear-gradient(to right, #fafafa, #fafafa 20%, #fff 20%) 0 0 ~"/ 100% 1px";
+        display: flex;
+        flex-wrap: none;
+
         .kss-main,
         .kss-sidebar {
-            float: left;
-            margin-right: -100%;
-            box-sizing: border-box;
+            
         }
     }
     .kss-main {
         width: 100%;
         margin: 0 auto;
+        background: #fff;
+
         @media screen and (min-width: 769px) {
             width: 80%;
-            margin-left: 20%;
-            padding: 0 100px 0;
+            padding: 0 40px 0 120px;
         }
     }
     .kss-sidebar {
         border-bottom: 1px solid #ddd;
+        background: #fafafa;
+
         @media screen and (min-width: 769px) {
             width: 20%;
-            padding: 0 10px 0 20px;
-            border-bottom: 0;
+            padding: 0 20px;
+            border-right: 1px solid rgba(0,0,0,.07);
         }
     }
 }
@@ -264,10 +256,13 @@ monospace;
 // ------------------------------------------------------------------------------
 #kss-node {
     .kss-doc-title {
-        margin: 0;
         @media screen and (min-width: 769px) {
             font-size: 1.5em;
         }
+    }
+    .kss-chrome-logo {
+        width: 60px;
+        height: 60px;
     }
     .kss-header,
     .kss-nav {
@@ -275,15 +270,43 @@ monospace;
             margin-top: 2em;
         }
     }
+    .kss-header {
+        display: flex;
+        align-items: center;
+
+        .kss-doc-title {
+            margin: 0 0 0 20px;
+        }
+    }
     .kss-nav__menu {
-        margin-top: (@kss-vertical-rhythm/2);
+        margin-top: 0;
         margin-bottom: (@kss-vertical-rhythm/2);
         padding: 0;
         list-style-type: none;
     }
+
+    .sticky {
+        top: 0;
+        position: fixed;
+    }
     .kss-nav__menu-item {
         display: inline-block;
         padding-right: @kss-vertical-rhythm;
+        font-size: 14px;
+        margin-bottom: 5px;
+
+        .kss-nav__menu-item {
+            margin-bottom: 0;
+        }
+
+        a {
+            color: #364149;
+
+            &:hover {
+                color: #008cff;
+            }
+        }
+
         @media screen and (min-width: 769px) {
             display: list-item;
             padding-right: 0;
@@ -295,27 +318,22 @@ monospace;
             display: block;
             list-style-type: none;
             margin: 0;
-            padding: 0;
+            padding: 0 0 0 10px;
             // @TODO: The ul is output even when there are no children. Fix this, so
             // we can put these :first-child and :last child styles back on the ul.
             li:first-child {
-                margin: 10px 0 0;
-                border-top: 1px solid #ccc;
-                padding: 10px 0 0;
+
             }
             li:last-child {
-                margin: 0 0 10px;
-                border-bottom: 1px solid #ccc;
+                margin: 0;
                 padding: 0 0 10px;
             }
         }
     }
     .kss-nav__ref {
-        color: #333;
-        font-weight: bold;
-        &:after {
-            content: ' ';
-        }
+        color: #364149;
+        display: inline-block;
+        margin-right: 6px;
     }
     .kss-nav__menu-child .kss-nav__ref {
         font-weight: normal;
@@ -333,7 +351,7 @@ monospace;
     }
     .kss-section {
         max-width: 100%;
-        margin-bottom: (@kss-vertical-rhythm * 2);
+        margin-bottom: 70px;
     }
     .kss-title {
         margin-bottom: 0;
@@ -383,15 +401,18 @@ monospace;
         display: table-cell;
     }
     .kss-modifier__wrapper {
-        border: 1px solid #ccc;
-        padding: 10px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 0 0 40px;
+        margin-bottom: 40px;
+        margin-top: 20px;
     }
     .kss-modifier__heading {
-        margin: -10px -10px 10px -10px;
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-        background-color: #eee;
-        font-weight: bold;
+        // margin: -10px -10px 10px -10px;
+        // padding: 10px;
+        // border-bottom: 1px solid #ccc;
+        // background-color: #eee;
+        // font-weight: bold;
     }
     .kss-modifier__default-name {
         font-weight: bold;
@@ -408,50 +429,137 @@ monospace;
     .kss-modifier__example {
         clear: left;
         padding: 1px 0; // Contain the example's margins.
-        margin: 0 0 (@kss-vertical-rhythm * 2) 0;
+        margin: 0 0 70px 0;
         &:last-child {
-            margin: 0;
+            margin-bottom: 0;
         }
     }
-    .kss-resizable {
-        width: 768px;
-        position: relative;
+    .kss-code__name{
+        float: none;
+        margin: 0 0 10px 0;
+        font-weight: bold;
     }
-    .kss-resizer {
+    .kss-resizable {
+        width: 425px;
+        height: 500px;
+        min-width: 320px !important;
+        min-height: 320px !important;
+        margin-top: 44px;
+        position: relative;
+        // transition: width ease 0.1s;
+    }
+    .kss-resizerHoriz {
         position: absolute;
         width: 21px;
-        right: -32px;
-        background: #666;
-        color: #fff;
+        right: -23px;
+        // background: linear-gradient(to right,  #eee 0%,#fafafa 50%,#fafafa 100%);
+
+        color: #dcdcdc;
         font-size: 23px;
         display: inline-block;
         line-height: 1;
         vertical-align: middle;
         padding-top: 3px;
-        height: 33px;
-        top: 50%;
-        margin-top: -24px;
+        height: calc(100% - 6px);
+        top: 1px;
         text-align: center;
-        transition: background linear .1s;
+        transition: background linear .1s, color linear .1s;
+        border-radius: 3px;
 
         &:hover {
             cursor: ew-resize;
-            background: #2d2d2d;
+            // background: linear-gradient(to right,  #ccc 0%,#fafafa 90%,#fafafa 100%);
+            background: lighten(#4183c4, 30%);
+            color: #fff;
         }
         &:after {
-            content: '||'
+            content: '||';
+            position: absolute;
+            top: 50%;
+            margin-top: -12px;
+            left: 5px;
         }
     }
-    .kss-resizer-width {
+
+    .kss-iframe-dimension {
         position: absolute;
-        color: #000;
+        left: 0;
+        margin: auto;
+        width: 230px;
+        top: -32px;
+        font-size: 15px;
+    }
+
+    .kss-width,
+    .kss-height {
+        width: 60px;
+        text-align: center;
+        font-size: 14px;
+        padding: 0 6px;
+        border: 1px solid #dcdcdc;
+        border-radius: 2px;
+    }
+
+    .kss-resizerVert {
+        position: absolute;
+        width: 100%;
+        // background: linear-gradient(to bottom, #eee 0, #fafafa 50%, #fafafa 100%);
+        color: #dcdcdc;
+        font-size: 23px;
+        display: inline-block;
+        line-height: 1;
+        vertical-align: middle;
+        padding-top: 3px;
+        height: 21px;
+        text-align: center;
+        transition: background linear .1s, color linear .1s;
+        bottom: -22px;
+        border-radius: 3px;
+
+        &:hover {
+            cursor: ns-resize;
+            // background: linear-gradient(to bottom,  #ccc 0%,#fafafa 90%,#fafafa 100%);
+            background: lighten(#4183c4, 30%);
+            color: #fff;
+        }
+        &:after {
+            content: '||';
+            position: absolute;
+            top: 50%;
+            margin-top: -12px;
+            transform: rotate(90deg);
+        }
+    }
+    .kss-resizerHoriz-width {
+        position: absolute;
+        color: #444;
         right: -50px;
-        font-size: 16px;
+        font-size: 15px;
         margin-top: 4px;
+        width: 200px;
+        top: -26px;
+        text-align: right;
+        right: 34px;
+    }
+    button.kss-style {
+        background: #fff;
+        border: 0;
+        color: #dcdcdc;
+        font-size: 14px;
+        padding: 0px 10px 0px;
+        margin: 0 5px;
+        border-radius: 4px;
+        height: 26px;
+        transition: background linear .1s, color linear .1s;
+
+        &:hover {
+            background: lighten(#4183c4, 30%);
+            color: #fff;
+            cursor: pointer;
+        }
     }
     .kss-markup {
         margin: -1px 0 @kss-vertical-rhythm 0;
-        border: 1px solid #999;
     }
     .kss-markup pre {
         margin: 0;
@@ -474,24 +582,26 @@ monospace;
     /* Pretty printing styles. Used with prettify.js. */
     /* SPAN elements with the classes below are added by prettyprint. */
     .prettyprint {
-        background: #2d2d2d;
-        font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
-        border: 0 !important;
+        background: #1d1f21;
+        font-family: Menlo,
+          "Bitstream Vera Sans Mono",
+          "DejaVu Sans Mono",
+          Monaco,
+          Consolas,
+          monospace;
+          border: 0 !important;
     }
-
     .pln {
-        color: #cccccc;
+        color: #c5c8c6;
     }
-
 
     /* Specify class=linenums on a pre to get line numbering */
-
     ol.linenums {
-        margin: 0;
         padding: 0;
-        list-style-type: none;
+        margin-top: 0;
+        margin-bottom: 0;
+        color: #969896;
     }
-
     li.L0,
     li.L1,
     li.L2,
@@ -503,66 +613,79 @@ monospace;
     li.L8,
     li.L9 {
         padding-left: 1em;
-        background-color: #2d2d2d;
+        background-color: #1d1f21;
         list-style-type: decimal;
     }
-
     @media screen {
         /* string content */
+
         .str {
-            color: #99cc99;
+            color: #b5bd68;
         }
         /* keyword */
+
         .kwd {
-            color: #cc99cc;
+            color: #b294bb;
         }
         /* comment */
+
         .com {
-            color: #999999;
+            color: #969896;
         }
         /* type name */
+
         .typ {
-            color: #6699cc;
+            color: #81a2be;
         }
         /* literal value */
+
         .lit {
-            color: #f99157;
+            color: #de935f;
         }
         /* punctuation */
+
         .pun {
-            color: #cccccc;
+            color: #c5c8c6;
         }
         /* lisp open bracket */
+
         .opn {
-            color: #cccccc;
+            color: #c5c8c6;
         }
         /* lisp close bracket */
+
         .clo {
-            color: #cccccc;
+            color: #c5c8c6;
         }
         /* markup tag name */
+
         .tag {
-            color: #f2777a;
+            color: #cc6666;
         }
         /* markup attribute name */
+
         .atn {
-            color: #f99157;
+            color: #de935f;
         }
         /* markup attribute value */
+
         .atv {
-            color: #66cccc;
+            color: #8abeb7;
         }
         /* declaration */
+
         .dec {
-            color: #f99157;
+            color: #de935f;
         }
         /* variable name */
+
         .var {
-            color: #f2777a;
+            color: #cc6666;
         }
         /* function name */
+
         .fun {
-            color: #6699cc;
+            color: #81a2be;
         }
     }
 

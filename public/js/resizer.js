@@ -1,25 +1,86 @@
 (function() {
 
     var resizeWrappers = document.getElementsByClassName('kss-resizable');
-    console.log('run')
+
+    // Taken from Chrome responsive tool
+    var standardDimensions = [320,375,425,768,1024,1200,1440],
+        reversed = [1440,1200,1024,768,425,375,320];
 
     var addEvents = function(currentItem) {
         var currentWrapper = currentItem;
 
-        var resizer = document.createElement('div');
-        var resizerWidth = document.createElement('div');
-        resizer.className = 'kss-resizer';
-        resizerWidth.className = 'kss-resizer-width';
-        currentWrapper.appendChild(resizer);
-        resizer.appendChild(resizerWidth);
+        var $currentWrapper = $(currentItem);
 
-        resizerWidth.innerHTML = parseInt(document.defaultView.getComputedStyle(currentWrapper).width, 10) + 'px';
 
-        resizer.addEventListener('mousedown', initDrag, false);
+        var resizerHoriz = document.createElement('div');
+        var resizerHorizWidth = document.createElement('div');
+
+        var resizerVert = document.createElement('div');
+        var resizerVertWidth = document.createElement('div');
+
+        var $widthCounter = $currentWrapper.find('.kss-width'),
+            $heightCounter = $currentWrapper.find('.kss-height');
+
+        var $incrementorButton = $currentWrapper.find('.kss-resize-next'),
+            $decrementorButton = $currentWrapper.find('.kss-resize-prev');
+
+        // Create horiz
+        resizerHoriz.className = 'kss-resizerHoriz';
+        resizerHorizWidth.className = 'kss-resizerHoriz-width';
+        currentWrapper.appendChild(resizerHoriz);
+        resizerHoriz.appendChild(resizerHorizWidth);
+
+        // Create vert
+        resizerVert.className = 'kss-resizerVert';
+        currentWrapper.appendChild(resizerVert);
+
+        // dimensions
+        $widthCounter.val(parseInt(document.defaultView.getComputedStyle(currentWrapper).width, 10));
+        $heightCounter.val(parseInt(document.defaultView.getComputedStyle(currentWrapper).height, 10));
+
+        // add resizer events
+        resizerHoriz.addEventListener('mousedown', initDragHoriz, false);
+
+        resizerVert.addEventListener('mousedown', initDragVert, false);
 
         var startX, startY, startWidth, startHeight;
 
-        function initDrag(e) {
+        // handle change event
+        $widthCounter.on('change', function() {
+            currentWrapper.style.width = $widthCounter.val() + 'px';
+        });
+
+        $heightCounter.on('change', function() {
+            currentWrapper.style.height = $heightCounter.val() + 'px';
+        });
+
+
+        // incrmemetor events
+        $incrementorButton.on('click', function() {
+            $.each(standardDimensions, function( index, value ) {
+                var currentWidth = $widthCounter.val();
+                if (value > currentWidth) {
+                    $widthCounter.val(value);
+                    $widthCounter.trigger('change');
+                    return false;
+                }
+            });
+        })
+
+        $decrementorButton.on('click', function() {
+            $.each(reversed, function( index, value ) {
+                var currentWidth = $widthCounter.val();
+                if (value < currentWidth) {
+                    $widthCounter.val(value);
+                    $widthCounter.trigger('change');
+                    return false;
+                }
+            });
+        })
+
+
+
+        function initDragHoriz(e) {
             startX = e.clientX;
             startY = e.clientY;
             startWidth = parseInt(document.defaultView.getComputedStyle(currentWrapper).width, 10);
@@ -28,21 +89,30 @@
             document.documentElement.addEventListener('mouseup', stopDrag, false);
         }
 
+        function initDragVert(e) {
+            startX = e.clientX;
+            startY = e.clientY;
+            startWidth = parseInt(document.defaultView.getComputedStyle(currentWrapper).width, 10);
+            startHeight = parseInt(document.defaultView.getComputedStyle(currentWrapper).height, 10);
+            document.documentElement.addEventListener('mousemove', doDragVert, false);
+            document.documentElement.addEventListener('mouseup', stopDrag, false);
+        }
+
         function doDragHoriz(e) {
             currentWrapper.style.width = (startWidth + e.clientX - startX) + 'px';
-            currentWrapper.style.height = (startHeight + e.clientY - startY) + 'px';
-            resizerWidth.innerHTML = (startWidth + e.clientX - startX) + 'px';
+            $widthCounter.val(startWidth + e.clientX - startX);
         }
 
         function doDragVert(e) {
-            currentWrapper.style.width = (startWidth + e.clientX - startX) + 'px';
             currentWrapper.style.height = (startHeight + e.clientY - startY) + 'px';
-            resizerWidth.innerHTML = (startWidth + e.clientX - startX) + 'px';
+            $heightCounter.val(startHeight + e.clientY - startY);
         }
 
         function stopDrag(e) {
-            document.documentElement.removeEventListener('mousemove', doDrag, false);
-            document.documentElement.removeEventListener('mouseup', stopDrag, false);
+            document.documentElement.removeEventListener('mousemove', doDragHoriz, false);
+            document.documentElement.removeEventListener('mouseup', doDragHoriz, false);
+            document.documentElement.removeEventListener('mousemove', doDragVert, false);
+            document.documentElement.removeEventListener('mouseup', doDragVert, false);
         }
     }
 
