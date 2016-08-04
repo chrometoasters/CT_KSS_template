@@ -1,21 +1,14 @@
 (function() {
-    var sticky = document.querySelector('.sticky-item');
-    var menuPosition = sticky.getBoundingClientRect();
-    var placeholder = document.createElement('div');
-    placeholder.style.width = menuPosition.width + 'px';
-    placeholder.style.height = menuPosition.height + 'px';
-    var isAdded = false;
+    var top = document.getElementById('sticky').offsetTop;
 
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset >= menuPosition.top && !isAdded) {
-            sticky.classList.add('sticky');
-            sticky.parentNode.insertBefore(placeholder, sticky);
-            isAdded = true;
-        } else if (window.pageYOffset < menuPosition.top && isAdded) {
-            sticky.classList.remove('sticky');
-            sticky.parentNode.removeChild(placeholder);
-            isAdded = false;
+    window.onscroll = function() {
+        console.log(top)
+        var y = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+        if (y >= top) {
+            sticky.className = 'stuck';
         }
-    });
-
+        else {
+            sticky.className = 'kss-nav';
+        }
+    };
 })();
