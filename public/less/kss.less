@@ -285,7 +285,7 @@ monospace;
         list-style-type: none;
     }
 
-    .sticky {
+    .stuck {
         top: 0;
         position: fixed;
     }
@@ -439,11 +439,16 @@ monospace;
         margin: 0 0 10px 0;
         font-weight: bold;
     }
+    .kss-tarp {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: transparent;
+        height: 100%;
+    }
     .kss-resizable {
         width: 425px;
-        height: 500px;
         min-width: 320px !important;
-        min-height: 320px !important;
         margin-top: 44px;
         position: relative;
         // transition: width ease 0.1s;
@@ -492,6 +497,7 @@ monospace;
 
     .kss-width,
     .kss-height {
+        display: inline;
         width: 60px;
         text-align: center;
         font-size: 14px;
