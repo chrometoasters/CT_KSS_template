@@ -1,3 +1,5 @@
+// addded to the iframed template to generate psuedo state styles. Do not remove this file!!
+
 (function() {
   var KssStateGenerator;
 

@@ -4,16 +4,28 @@
 // @author dan.west@chrometoaster.com
 //
 // @summary
-// Copy of kss-node's markup handlebars helper with additional assets added.
+//  Copy of kss-node's markup handlebars helper with additional assets added.
 //
 // @returns string
 //
 // @description
-// In order to facilitate responsive component presentation we need to generate a full set of the
-// the components markup with any assets (css and javascript).
+//  In order to facilitate responsive component presentation we need to generate a full set of the
+//  the components markup with any assets (css and javascript). This is then added to the iframe's
+//  srcdoc attribute.
 
+var fs = require('fs');
 
 var Kss = require('../../kss/lib/kss.js');
+
+var addJs;
+
+// This file is required for psedo state style generation
+fs.readFile(__dirname + '/../public/js/kss.js', 'utf8', function (err,data) {
+    if (err) {
+        return console.log(err);
+    }
+    addJs = '<script>' + data + '</script>';
+});
 
 module.exports.register = function(handlebars, config) {
     config = config || {};
@@ -66,6 +78,11 @@ module.exports.register = function(handlebars, config) {
         // We don't wrap the rendered template in "new handlebars.SafeString()" since
         // we want the ability to display it as a code sample with {{ }} and as
         // rendered HTML with {{{ }}}.
-        return options.data.root.styles + template(data);
+
+
+        // concat the styles, markup and JS
+        var iframeSrc = options.data.root.styles + template(data) + addJs;
+
+        return iframeSrc;
     });
 };
