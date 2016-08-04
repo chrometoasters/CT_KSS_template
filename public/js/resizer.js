@@ -1,10 +1,10 @@
-(function() {
+$(document).ready(function() {
 
     var resizeWrappers = document.getElementsByClassName('kss-resizable');
 
     // Taken from Chrome responsive tool
     var standardDimensions = [320,375,425,768,1024,1200,1440],
-        reversed = [1440,1200,1024,768,425,375,320];
+        standardDimensionsReversed = [1440,1200,1024,768,425,375,320];
 
     // for covering up the iframe when dragging
     var tarp = document.createElement('div');
@@ -60,18 +60,14 @@
 
         // incrmemetor events
         $incrementorButton.on('click', function() {
-            $.each(standardDimensions, function( index, value ) {
-                var currentWidth = $widthCounter.val();
-                if (value > currentWidth) {
-                    $widthCounter.val(value);
-                    $widthCounter.trigger('change');
-                    return false;
-                }
-            });
+            stepResize(standardDimensions);
+        })
+        $decrementorButton.on('click', function() {
+            stepResize(standardDimensionsReversed);
         })
 
-        $decrementorButton.on('click', function() {
-            $.each(reversed, function( index, value ) {
+        function stepResize(list) {
+            $.each(list, function( index, value ) {
                 var currentWidth = $widthCounter.val();
                 if (value < currentWidth) {
                     $widthCounter.val(value);
@@ -79,7 +75,7 @@
                     return false;
                 }
             });
-        })
+        }
 
         function initDragHoriz(e) {
             startX = e.clientX;
@@ -120,16 +116,16 @@
         }
     }
 
+    // init the dragabble
     for(var i = 0; i < resizeWrappers.length; i++) {
         addEvents(resizeWrappers.item(i));
     }
 
+    // Add correct heights to iframes
     $('iframe').load(function(){
-        console.log('loaded')
         var $iframes = $('iframe');
         $iframes.each(function(index, el) {
             var $iframe = $(this);
-            console.log('blah')
 
             var $wrapper = $iframe.closest('.kss-resizable');
             var $heightCounter = $wrapper.find('.kss-height');
@@ -140,26 +136,4 @@
         });
     });
 
-    // $('iframe').load(function() {
-    //     var $iframe = $currentWrapper.find('iframe');
-
-    //     console.log($iframe);
-
-    //     $currentWrapper.css({
-    //         height: $iframe.contents().find("body").height() + 20
-    //     });
-    //     $heightCounter.val($iframe.contents().find("body").height() + 20);
-    // });
-
-    // $('iframe').load(function() {
-    //     console.log($(this).contents().find("body") );
-    // });
-    // $iframe.each(function(index, el) {
-    //     console.log($(this).contents().height());
-    // });
-
-    // $('iframe').load(function() {
-    //     console.log(this.contentWindow.document.body.offsetHeight + 'px');
-    // });
-
-})();
+});

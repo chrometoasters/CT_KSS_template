@@ -11,6 +11,7 @@
     "less": "lessc --verbose --compress public/less/kss.less public/css/kss.css"
   },
   "devDependencies": {
+    "jquery": "^1.12.4",
     "less": "^2.1.1"
   }
 }
