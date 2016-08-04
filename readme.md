@@ -14,6 +14,10 @@
 kss-node --config {path-to-file}/{name-of-kss-config.json}
 ````
 
-## Special features
+## Styleguide development
 
-### Responsive Wrapper
+- Compile styles
+
+````bash
+npm run less
+````
