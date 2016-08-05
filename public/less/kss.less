@@ -344,10 +344,60 @@ monospace;
 // Content-area components
 // ------------------------------------------------------------------------------
 #kss-node {
+    .kss-expando {
+        display: inline-block;
+        text-indent: -10000px;
+        height: 25px;
+        width: 25px;
+        position: absolute;
+        right: -24px;
+        top: -22px;
+        border-radius: 3px;
+        transition: background linear .1s;
+
+        &:hover {
+            background: #b6cfe8;
+            cursor: ne-resize;
+
+            &:after {
+                border-color: transparent #fff transparent transparent;
+            }
+
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 15px 15px 0;
+            border-color: transparent #dcdcdc transparent transparent;
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            transition: color linear .1s;
+        }
+    }
     iframe {
         width: 100%;
         border: 1px solid #ddd;
         height: 100%;
+
+        &.kss-is-expanded {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            top: 20px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            z-index: 10;
+        }
+        &.animate-in {
+            will-change: transform, opacity;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+        }
     }
     .kss-section {
         max-width: 100%;
@@ -564,6 +614,32 @@ monospace;
             cursor: pointer;
         }
     }
+
+    // Structured data
+    .kss-struc-data {
+        h3 {
+            color: #222;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+        ul {
+            padding: 0 0 0 10px;
+            margin: 0 0 20px;
+            font-size: 14px;
+            font-weight: bold;
+            list-style-type: none;
+
+            ul {
+                padding-left: 24px;
+                margin-bottom: 0;
+            }
+
+            span {
+                font-weight: normal;
+            }
+        }
+    }
+
     .kss-markup {
         margin: -1px 0 @kss-vertical-rhythm 0;
     }

@@ -148,6 +148,13 @@
                                 <div>&bull; <a href="{{ux-doc}}">UX documentation</a></div>
                             {{/if}}
 
+                            {{#if structured-data}}
+                                <div class="kss-style kss-struc-data">
+                                    <h3>Structured data</h3>
+                                    {{{structured-data}}}
+                                </div>
+                            {{/if}}
+
                         </div>
 
                         <!-- Markup and states / modifiers -->
@@ -168,6 +175,8 @@
                                     <div class="kss-style kss-iframe-dimension">
                                         <button class="kss-style kss-resize-prev"><<</button><input class="kss-style kss-width" type="number" pattern="[0-9]{10}"> x <input class="kss-style kss-height" type="number" pattern="[0-9]{10}"><button class="kss-style kss-resize-next">>></button>
                                     </div>
+                                    <button class="kss-expando-close" style="display:none;">Close</button>
+                                    <div class="kss-expando">Expand</div>
                                     <iframe srcdoc='{{iframedMarkup}}'>
                                          <p>Your browser does not support iframes.</p>
                                     </iframe>
@@ -222,6 +231,7 @@
     <script src="public/js/resizer.js"></script>
     <script src="public/js/smoothscroll.js"></script>
     <script src="public/js/stickyfill.js"></script>
+    <script src="public/js/fullScreen.js"></script>
     <script>
         prettyPrint();
     </script>

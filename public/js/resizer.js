@@ -60,13 +60,28 @@ $(document).ready(function() {
 
         // incrmemetor events
         $incrementorButton.on('click', function() {
-            stepResize(standardDimensions);
+            $.each(standardDimensions, function( index, value ) {
+                var currentWidth = $widthCounter.val();
+                if (value > currentWidth) {
+                    $widthCounter.val(value);
+                    $widthCounter.trigger('change');
+                    return false;
+                }
+            });
         })
         $decrementorButton.on('click', function() {
-            stepResize(standardDimensionsReversed);
+            $.each(standardDimensionsReversed, function( index, value ) {
+                var currentWidth = $widthCounter.val();
+                if (value < currentWidth) {
+                    $widthCounter.val(value);
+                    $widthCounter.trigger('change');
+                    return false;
+                }
+            });
         })
 
         function stepResize(list) {
+            console.log(list);
             $.each(list, function( index, value ) {
                 var currentWidth = $widthCounter.val();
                 if (value < currentWidth) {
