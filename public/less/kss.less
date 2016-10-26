@@ -24,6 +24,14 @@ monospace;
 // ------------------------------------------------------------------------------
 // Wrap all of this template's base HTML styling inside a .kss-style selector.
 // ------------------------------------------------------------------------------
+html {
+    height: 100%;
+}
+
+#kss-node {
+    min-height: 100%;
+}
+
 .kss-style {
     color: @kss-colors-foreground;
     font-family: @kss-font-body;
@@ -264,6 +272,11 @@ monospace;
         width: 60px;
         height: 60px;
     }
+    .kss-header {
+        &:hover {
+            text-decoration: none;
+        }
+    }
     .kss-header,
     .kss-nav {
         @media screen and (min-width: 769px) {
@@ -388,11 +401,14 @@ monospace;
             position: fixed;
             height: 100%;
             width: 100%;
-            top: 20px;
+            top: 0;
             left: 0;
             right: 0;
             margin: auto;
             z-index: 10;
+        }
+        &.kss-no-border {
+            border: 0;
         }
         &.animate-in {
             will-change: transform, opacity;
@@ -452,12 +468,14 @@ monospace;
     }
     .kss-modifier__wrapper {
         border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
         padding: 0 0 40px;
         margin-bottom: 40px;
         margin-top: 20px;
     }
     .kss-modifier__heading {
+        font-size: 26px;
+        line-height: 30px;
+        color: #444;
         // margin: -10px -10px 10px -10px;
         // padding: 10px;
         // border-bottom: 1px solid #ccc;
@@ -642,6 +660,7 @@ monospace;
 
     .kss-markup {
         margin: -1px 0 @kss-vertical-rhythm 0;
+        margin-bottom: 150px;
     }
     .kss-markup pre {
         margin: 0;

@@ -142,12 +142,14 @@ $(document).ready(function() {
         $iframes.each(function(index, el) {
             var $iframe = $(this);
 
-            var $wrapper = $iframe.closest('.kss-resizable');
-            var $heightCounter = $wrapper.find('.kss-height');
-            $wrapper.css({
-                height: $iframe.contents().find("body").height() + 20
-            });
-            $heightCounter.val($iframe.contents().find("body").height() + 20);
+            if($iframe.closest('.kss-fixed')) {
+                var $wrapper = $iframe.closest('.kss-fixed');
+                var $heightCounter = $wrapper.find('.kss-height');
+                $wrapper.css({
+                    height: $iframe.contents().find("body").height() + 40
+                });
+                $heightCounter.val($iframe.contents().find("body").height() + 40);
+            }
         });
     });
 

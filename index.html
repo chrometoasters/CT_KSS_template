@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>NZQA styleguide</title>
+    <title>ACME styleguide</title>
     <meta name="description" content="">
     <meta name="generator" content="kss-node">
     <meta name="viewport" content="width=device-width">
@@ -22,9 +22,11 @@
 
     <div class="kss-sidebar kss-style">
 
-        <header class="kss-header">
-            <img class="kss-chrome-logo" src="public/images/ct_logo_bandw.png" alt="">
-            <h1 class="kss-doc-title">NZQA styleguide</h1>
+        <header>
+            <a class="kss-header" href="/styleguide">
+                <img class="kss-chrome-logo" src="public/images/ct_logo_bandw.png" alt="">
+                <h1 class="kss-doc-title">ACME styleguide</h1>
+            </a>
         </header>
 
         <!-- Sticky nav -->
@@ -160,9 +162,13 @@
                         <!-- Markup and states / modifiers -->
                         {{#if markup}}
                             <div class="kss-modifier__wrapper kss-style">
-                                <h2 class="kss-modifier__heading kss-style">
-                                    Example{{#if modifiers}}s{{/if}}
-                                </h2>
+                                {{#if pattern}}
+                                    <br>
+                                {{else}}
+                                    <h2 class="kss-modifier__heading kss-style">
+                                        Example{{#if modifiers}}s{{/if}}
+                                    </h2>
+                                {{/if}}
 
                                 {{#if modifiers}}
                                     <div class="kss-modifier__default-name kss-style">
@@ -170,17 +176,26 @@
                                     </div>
                                 {{/if}}
 
-                                <!-- Default -->
-                                <div class="kss-modifier__example kss-resizable">
-                                    <div class="kss-style kss-iframe-dimension">
-                                        <button class="kss-style kss-resize-prev"><<</button><input class="kss-style kss-width" type="number" pattern="[0-9]{10}"> x <input class="kss-style kss-height" type="number" pattern="[0-9]{10}"><button class="kss-style kss-resize-next">>></button>
+                                {{#if pattern}}
+                                    <!-- Default -->
+                                    <div class="kss-modifier__example  kss-fixed">
+                                        <iframe class="kss-no-border" srcdoc='{{iframedMarkup}}'>
+                                             <p>Your browser does not support iframes.</p>
+                                        </iframe>
                                     </div>
-                                    <button class="kss-expando-close" style="display:none;">Close</button>
-                                    <div class="kss-expando">Expand</div>
-                                    <iframe srcdoc='{{iframedMarkup}}'>
-                                         <p>Your browser does not support iframes.</p>
-                                    </iframe>
-                                </div>
+                                {{else}}
+                                    <!-- Default -->
+                                    <div class="kss-modifier__example kss-resizable kss-fixed">
+                                        <div class="kss-style kss-iframe-dimension">
+                                            <button class="kss-style kss-resize-prev"><<</button><input class="kss-style kss-width" type="number" pattern="[0-9]{10}"> x <input class="kss-style kss-height" type="number" pattern="[0-9]{10}"><button class="kss-style kss-resize-next">>></button>
+                                        </div>
+                                        <button class="kss-expando-close" style="display:none;">Close</button>
+                                        <div class="kss-expando">Expand</div>
+                                        <iframe srcdoc='{{iframedMarkup}}'>
+                                             <p>Your browser does not support iframes.</p>
+                                        </iframe>
+                                    </div>
+                                {{/if}}
 
                                 <!-- Modifiers and states -->
                                 {{#eachModifier}}
@@ -203,11 +218,15 @@
                                 {{/eachModifier}}
                             </div>
 
-                            <!-- The code -->
-                            <div class="kss-markup kss-style">
-                                <p class="kss-code__name kss-style">Code <></p>
-                                <pre class="prettyprint linenums lang-html"><code data-language="html">{{markup}}</code></pre>
-                            </div>
+                            {{#if pattern}}
+                                <br>
+                            {{else}}
+                                <!-- The code -->
+                                <div class="kss-markup kss-style">
+                                    <p class="kss-code__name kss-style">Code <></p>
+                                    <pre class="prettyprint linenums lang-html"><code data-language="html">{{markup}}</code></pre>
+                                </div>
+                            {{/if}}
                         {{/if}}
 
                 {{#ifDepth 1}}
