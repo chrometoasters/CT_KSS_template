@@ -32,6 +32,7 @@ module.exports.register = function(handlebars, config) {
 
     handlebars.registerHelper('iframedMarkup', function(options) {
         var partials = options.data.root.partials,
+            scripts = options.data.root.scripts,
             section,
             modifier = false,
             template,
@@ -79,9 +80,8 @@ module.exports.register = function(handlebars, config) {
         // we want the ability to display it as a code sample with {{ }} and as
         // rendered HTML with {{{ }}}.
 
-
         // concat the styles, markup and JS
-        var iframeSrc = options.data.root.styles + template(data) + addJs;
+        var iframeSrc = options.data.root.styles + template(data) + addJs + scripts;
 
         return iframeSrc;
     });
