@@ -38,7 +38,7 @@ module.exports.register = function(handlebars, config) {
             template,
             partial,
             data,
-            styles = this.styles;
+            styles = options.data.root.styles;
 
         if (!this) {
             return '';
@@ -80,8 +80,12 @@ module.exports.register = function(handlebars, config) {
         // we want the ability to display it as a code sample with {{ }} and as
         // rendered HTML with {{{ }}}.
 
+        // force fonts to load
+        var markup = template(data);
+        markup = '<div class="fonts-stage-2">' + markup + '</div>'
+
         // concat the styles, markup and JS
-        var iframeSrc = options.data.root.styles + template(data) + addJs + scripts;
+        var iframeSrc = styles + markup + addJs + scripts;
 
         return iframeSrc;
     });
