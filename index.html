@@ -221,6 +221,12 @@
                             {{#if pattern}}
                                 <br>
                             {{else}}
+                                <!-- generate markup for schema json-ld -->
+                                {{#if json-ld}}
+                                    <h2 class="kss-modifier__heading kss-style">Schema</h2>
+                                    {{{jsonldMarkup json-ld}}}
+
+                                {{/if}}
                                 <!-- The code -->
                                 <div class="kss-markup kss-style">
                                     <button class="kss-code__name kss-style kss-button show-hide-js">Show Code <></button>

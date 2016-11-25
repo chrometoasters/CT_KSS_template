@@ -57,6 +57,15 @@ module.exports.register = function(handlebars, config) {
         // Load the information about this section's markup partial.
         partial = partials[section.reference()];
 
+
+
+
+        // console.log('QQQQQQQQQQQQQQQQQQQQQQQQQQ')
+        // console.log(options.data.root.options.source)
+
+
+
+
         // Prepare the sample data for the partial.
         data = JSON.parse(JSON.stringify(partial.data));
         /* eslint-disable camelcase */

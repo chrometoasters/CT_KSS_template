@@ -19,7 +19,13 @@
   "readmeFilename": "readme.md",
   "homepage": "https://bitbucket.org/chrometoaster/ct__kss-node-template-gulp#readme",
   "_id": "ct__kss-node-template-gulp@0.0.1",
-  "_shasum": "2f7981b39ba8021508cf37ae9dc848461b69eece",
+  "_shasum": "5e785b4fb6b352b874b0dd291bc225e0b3647cbf",
   "_from": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
-  "_resolved": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git#e9bfa48cbb57e93f53e4b412bbfd66f7a0754d65"
+  "_resolved": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git#bf8487d81a3c0f5bd54f7a7c7795ccc2dc614f4c",
+  "dependencies": {
+    "fs-find": "^0.4.0",
+    "node-json2html": "^1.1.1",
+    "promise": "^7.1.1",
+    "recursive-readdir-sync": "^1.0.6"
+  }
 }
