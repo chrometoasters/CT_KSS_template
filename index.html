@@ -13,66 +13,74 @@
     <meta name="description" content="">
     <meta name="generator" content="kss-node">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="public/css/kss.css">
+<!--     <link rel="stylesheet" href="public/css/kss.css">
+ -->    <link rel="stylesheet" href="public/css/main.css">
 </head>
 
-<body id="kss-node">
+<body id="kss-node" class="kss-node {{#if homepage}}kss-overview {{/if}}">
 
-    <!-- Left hand sidebar -->
+    <header class="kss-header">
+        <a class="" href="./index.html">
+            {{#if homepage}}
+                <img class="kss-chrome-logo" src="public/images/ct_logo_bandw_white.png" alt=""/>
+            {{else}}
+                <img class="kss-chrome-logo" src="public/images/ct_logo_bandw.png" alt=""/>
+            {{/if}}
+        </a>
+    </header>
+
+    <div class="body-wrapper">
+    <!-- Left hand sidebar-->
 
     <div class="kss-sidebar kss-style">
 
-        <header>
-            <a class="kss-header" href="./index.html">
-                <img class="kss-chrome-logo" src="public/images/ct_logo_bandw.png" alt="">
-                <h1 class="kss-doc-title">Styleguide</h1>
-            </a>
-        </header>
 
         <!-- Sticky nav -->
-        <nav id="sticky" class="kss-nav">
-            <ul class="kss-nav__menu">
+        <nav class="kss-nav sticky" id="kss-nav">
+            <h2>Styleguide</h2>
+            <ul class="kss-nav__menu ">
                 <li class="kss-nav__menu-item">
-                    <a href="./index.html">
-                        <span class="kss-nav__name">Overview</span>
+                    <a href="./index.html#kssref-0">
+                        <span class="kss-nav__name">Home</span>
                     </a>
                 </li>
 
                 {{#eachRoot}}
-                    <li class="kss-nav__menu-item">
-                        <a href="section-{{referenceURI}}.html">
+                    <li class="kss-nav__menu-item {{#ifReference ../rootName}}open active highlight{{/ifReference}}">
+                        <a href="section-{{referenceURI}}.html#kssref-{{referenceURI}}" class="">
                             <span class="kss-nav__ref">
                                 {{#ifNumeric reference}}
                                     {{reference}}
                                 {{else}}
                                     {{autoincrement}}
                                 {{/ifNumeric}}
-                             &ndash;</span><span class="kss-nav__name">{{header}}</span>
+                             &ndash;</span>
+                             <span class="kss-nav__name">{{header}}</span>
                         </a>
+                        <ul class="kss-nav__menu-child">
+                        {{#eachSection reference}}
+                            {{#ifDepth 2}}
+                                    <li class="kss-nav__menu-item">
+                                        <a href="section-{{../../referenceURI}}.html#kssref-{{referenceURI}}">
+                                            <span class="kss-nav__ref">
+                                                {{#ifNumeric reference}}
+                                                    {{reference}}
+                                                {{else}}
+                                                    {{autoincrement}}
+                                                {{/ifNumeric}}
+                                            </span>
+                                            <span class="kss-nav__name">{{header}}</span>
+                                        </a>
+                                    </li>
+                            {{/ifDepth}}
 
-                        {{#ifReference ../rootName}}
-                            <ul class="kss-nav__menu-child">
-                                {{#eachSection reference}}
-                                    {{#ifDepth 2}}
-                                        <li class="kss-nav__menu-item">
-                                            <a href="section-{{../../referenceURI}}.html#kssref-{{referenceURI}}">
-                                                <span class="kss-nav__ref">
-                                                    {{#ifNumeric reference}}
-                                                        {{reference}}
-                                                    {{else}}
-                                                        {{autoincrement}}
-                                                    {{/ifNumeric}}
-                                                </span><span class="kss-nav__name">{{header}}</span>
-                                            </a>
-                                        </li>
-                                    {{/ifDepth}}
-                                {{/eachSection}}
-                            </ul>
-                        {{/ifReference}}
+                        {{/eachSection}}
+                        </ul>
                     </li>
                 {{/eachRoot}}
 
             </ul>
+
         </nav>
     </div>
 
@@ -95,7 +103,7 @@
                     <div id="kssref-{{referenceURI}}" class="kss-section kss-section--depth-{{depth}}">
                 {{else}}
                     <!-- Render inside section element after first section -->
-                    <section id="kssref-{{referenceURI}}" class="kss-section kss-section--depth-{{depth}}">
+                    <section id="kssref-{{referenceURI}}" class="kss-section kss-section--depth-{{depth}} open">
                 {{/ifDepth}}
 
                         <div class="kss-style">
@@ -108,20 +116,22 @@
                                         {{else}}
                                             {{autoincrement}}
                                         {{/ifNumeric}}
-
-                                        <span class="kss-title__permalink-hash">
+                                        &nbsp;
+<!--                                         <span class="kss-title__permalink-hash">
                                             {{#ifNumeric reference}}
                                                 #permalink
                                             {{else}}
                                                 #{{reference}}
                                             {{/ifNumeric}}
                                         </span>
-                                    </span>
+ -->                                    </span>
 
                                     {{header}}
                                 </a>
                             </h{{depth}}>
 
+                        </div>
+                         <div class="show-hide-content">
                             {{#if parameters}}
                                 <!-- Parameters -->
                                 <ul class="kss-parameters">
@@ -157,7 +167,6 @@
                                 </div>
                             {{/if}}
 
-                        </div>
 
                         <!-- Markup and states / modifiers -->
                         {{#if markup}}
@@ -229,12 +238,12 @@
                                 {{/if}}
                                 <!-- The code -->
                                 <div class="kss-markup kss-style">
-                                    <button class="kss-code__name kss-style kss-button show-hide-js">Show Code <></button>
+                                    <button class="kss-code__name kss-style kss-button show-hide-js" data-alt-value="Hide Code <>">Show Code <></button>
                                     <pre class="prettyprint linenums lang-html" style="display: none"><code data-language="html">{{markup}}</code></pre>
                                 </div>
                             {{/if}}
                         {{/if}}
-
+                    </div>
                 {{#ifDepth 1}}
                     </div>
                 {{else}}
@@ -246,7 +255,7 @@
         {{/if}}
 
     </article>
-
+</div>
     <!-- Project specific scripts -->
     {{{scripts}}}
     <!-- Styleguide scripts -->
@@ -258,9 +267,9 @@
     <script src="public/js/stickyfill.js"></script>
     <script src="public/js/fullScreen.js"></script>
     <script src="public/js/hideShow.js"></script>
-    <script>
-        prettyPrint();
-    </script>
+    <script src="public/js/navigation.js"></script>
+    <script src="public/js/scroll-spy.js"></script>
+    <script>prettyPrint(); </script>
 
 </body>
 
