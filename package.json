@@ -1,31 +1,81 @@
 {
-  "name": "ct__kss-node-template-gulp",
-  "version": "0.0.1",
+  "_args": [
+    [
+      {
+        "raw": "ct__kss-node-template-gulp@git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+        "scope": null,
+        "escapedName": "ct__kss-node-template-gulp",
+        "name": "ct__kss-node-template-gulp",
+        "rawSpec": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+        "spec": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "bitbucket",
+          "ssh": "git@bitbucket.org:chrometoaster/ct__kss-node-template-gulp.git",
+          "sshUrl": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+          "httpsUrl": "git+https://bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+          "shortcut": "bitbucket:chrometoaster/ct__kss-node-template-gulp",
+          "directUrl": "https://bitbucket.org/chrometoaster/ct__kss-node-template-gulp/raw/master/package.json"
+        }
+      },
+      "/Users/basvanlunteren/git_repositories/ct__statics-boilerplate"
+    ]
+  ],
+  "_from": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+  "_inCache": true,
+  "_location": "/ct__kss-node-template-gulp",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "ct__kss-node-template-gulp@git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+    "scope": null,
+    "escapedName": "ct__kss-node-template-gulp",
+    "name": "ct__kss-node-template-gulp",
+    "rawSpec": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+    "spec": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "bitbucket",
+      "ssh": "git@bitbucket.org:chrometoaster/ct__kss-node-template-gulp.git",
+      "sshUrl": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+      "httpsUrl": "git+https://bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+      "shortcut": "bitbucket:chrometoaster/ct__kss-node-template-gulp",
+      "directUrl": "https://bitbucket.org/chrometoaster/ct__kss-node-template-gulp/raw/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git#a6624c61b4f65436e21a4208fda53b9b16167714",
+  "_shasum": "8e62c049aa9e85800372f4bfeec368a9f7d24863",
+  "_shrinkwrap": null,
+  "_spec": "ct__kss-node-template-gulp@git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
+  "_where": "/Users/basvanlunteren/git_repositories/ct__statics-boilerplate",
+  "dependencies": {
+    "fs-find": "^0.4.0",
+    "gulp": "^3.9.1",
+    "node-json2html": "^1.1.1",
+    "promise": "^7.1.1",
+    "recursive-readdir-sync": "^1.0.6"
+  },
   "description": "CT template for kss-node.",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "jquery": "^1.12.4",
+    "less": "^2.1.1"
+  },
+  "homepage": "https://bitbucket.org/chrometoaster/ct__kss-node-template-gulp#readme",
+  "name": "ct__kss-node-template-gulp",
+  "optionalDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "less": "lessc --verbose --compress public/less/kss.less public/css/kss.css"
+    "less": "lessc --verbose --compress public/less/kss.less public/css/kss.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "jquery": "^1.12.4",
-    "less": "^2.1.1"
-  },
-  "gitHead": "e9bfa48cbb57e93f53e4b412bbfd66f7a0754d65",
-  "readme": "# Chrometoaster Custom KSS template\n\n## Assumes use of following technolgies / approach\n\n- Use of kss-node in parent project to generate living styleguide\n\n## Setup\n\n1. Include a reference to this repo in the parent project's package.json.\n2. Create a kss config file in the parent project, that looks something like the example-config.json in this directory.\n3. Run the styleguide creation CLI command. This can be part of a taskrunner (gulp) or run on the command line.\n\n````bash\nkss-node --config {path-to-file}/{name-of-kss-config.json}\n````\n\n## Styleguide development\n\n- Compile styles\n\n````bash\nnpm run less\n````\n",
-  "readmeFilename": "readme.md",
-  "homepage": "https://bitbucket.org/chrometoaster/ct__kss-node-template-gulp#readme",
-  "_id": "ct__kss-node-template-gulp@0.0.1",
-  "_shasum": "5e785b4fb6b352b874b0dd291bc225e0b3647cbf",
-  "_from": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git",
-  "_resolved": "git+ssh://git@bitbucket.org/chrometoaster/ct__kss-node-template-gulp.git#bf8487d81a3c0f5bd54f7a7c7795ccc2dc614f4c",
-  "dependencies": {
-    "fs-find": "^0.4.0",
-    "node-json2html": "^1.1.1",
-    "promise": "^7.1.1",
-    "recursive-readdir-sync": "^1.0.6"
-  }
+  "version": "0.0.1",
+  "main": "example-index.js",
+  "author": "",
+  "license": "ISC"
 }
