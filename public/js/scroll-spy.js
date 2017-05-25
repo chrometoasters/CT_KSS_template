@@ -50,4 +50,6 @@ $(document).ready(function() {
         }
 
     });
+    // add margin-bottom to the last section, so scroll spy works even with sections minimized
+    $('article section:last').css({'margin-bottom' : $(window).height()});
 });
