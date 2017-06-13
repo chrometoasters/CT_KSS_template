@@ -156,15 +156,23 @@ body.kss-node {
                 &.kss-title--level-2 {
                     padding: 10px 30px 10px 0;
                     margin: 0;
-                    font-size: $kss-font-size * 1.875;
+                    font-size: $kss-font-size * 2.2;
                     font-weight: 300;
                     color: $g-color-black05;
+                    border-bottom: 1px solid $g-color-grey04;
+                }
+                &.kss-title--level-3 {
+                    padding: 10px 30px 10px 0;
+                    margin: 0;
+                    font-size: $kss-font-size * 1.5;
+                    font-weight: 400;
+                    color: $g-color-grey03;
                     border-bottom: 1px solid $g-color-grey04;
                 }
 
                 .kss-title__permalink {
                     display: inline-block;
-                    color: $g-color-grey02;
+                    color: inherit;
                     text-decoration: none;
 
                     &:focus,
@@ -306,6 +314,7 @@ body.kss-node {
                 width: 21px;
                 right: -23px;
                 // background: linear-gradient(to right,  #eee 0%,#fafafa 50%,#fafafa 100%);
+                background-color: $g-color-offwhite02;
                 color: #dcdcdc;
                 font-size: 23px;
                 display: inline-block;
@@ -357,6 +366,7 @@ body.kss-node {
                 position: absolute;
                 width: 100%;
                 // background: linear-gradient(to bottom, #eee 0, #fafafa 50%, #fafafa 100%);
+                background-color: $g-color-offwhite02;
                 color: #dcdcdc;
                 font-size: 23px;
                 display: inline-block;
@@ -449,7 +459,7 @@ body.kss-node {
 
             &.kss-markup {
                 margin: -1px 0 $kss-vertical-rhythm 0;
-                margin-bottom: 150px;
+                margin-bottom: 80px;
             }
 
             &.kss-markup pre {

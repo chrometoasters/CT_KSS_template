@@ -31,7 +31,6 @@ textarea {
     h6 {
         margin: $kss-vertical-rhythm 0 0;
         font-family: $g-font-graphik;
-        font-weight: 900;
         line-height: 1.15em;
         color: $kss-color-heading;
     }
@@ -50,26 +49,30 @@ textarea {
     }
 
     h2 {
-        font-size: $kss-font-size * 2.25;
+        font-size: $kss-font-size * 2.75;
         font-weight: 300;
         color: $g-color-brand1;
     }
 
     h3 {
-        font-size: $kss-font-size * 2.125;
+        font-size: $kss-font-size * 1.75;
+        font-weight: 400;
     }
 
     h4 {
-        font-size: $kss-font-size * 2;
+        font-size: $kss-font-size * 1.5;
+        font-weight: 500;
     }
 
     h5 {
         font-size: $kss-font-size * 1.875;
-    }
+        font-weight: 400;
+}
 
     h6 {
         font-size: $kss-font-size * 1.75;
-    }
+        font-weight: 400;
+   }
 
     p {
         margin: ($kss-vertical-rhythm / 2) 0 $kss-vertical-rhythm;

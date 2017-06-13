@@ -206,7 +206,6 @@ body {
 .kss-style h6 {
   margin: 24px 0 0;
   font-family: Graphik, OpenSans, Helvetica, Arial, sans-serif;
-  font-weight: 900;
   line-height: 1.15em;
   color: #111; }
 .kss-style h4,
@@ -218,17 +217,21 @@ body {
   font-weight: 700;
   color: #f94493; }
 .kss-style h2 {
-  font-size: 36px;
+  font-size: 44px;
   font-weight: 300;
   color: #f94493; }
 .kss-style h3 {
-  font-size: 34px; }
+  font-size: 28px;
+  font-weight: 400; }
 .kss-style h4 {
-  font-size: 32px; }
+  font-size: 24px;
+  font-weight: 500; }
 .kss-style h5 {
-  font-size: 30px; }
+  font-size: 30px;
+  font-weight: 400; }
 .kss-style h6 {
-  font-size: 28px; }
+  font-size: 28px;
+  font-weight: 400; }
 .kss-style p {
   margin: 12px 0 24px;
   font-size: ms(0);
@@ -793,13 +796,13 @@ body.kss-overview .kss-main .kss-overview h1 {
   font-weight: 700;
   text-align: center;
   padding-top: 23px;
-  padding-right: 20px;
+  padding-right: 21px;
   padding-bottom: 20px;
-  padding-left: 30px;
+  padding-left: 31px;
   margin-top: 0;
-  margin-right: -35px;
+  margin-right: -31px;
   margin-bottom: 0;
-  margin-left: -35px; }
+  margin-left: -31px; }
   body.kss-overview .kss-main .kss-overview h1 .kss-title__permalink {
     color: #f94493; }
 body.kss-overview .kss-main .kss-overview h2 {
@@ -812,8 +815,8 @@ body.kss-overview .kss-main .kss-overview blockquote {
   text-align: center;
   background-color: #f94493;
   color: #fff;
-  padding: 10px 35px;
-  margin: 0 -35px;
+  padding: 10px 31px;
+  margin: 0 -31px;
   border-left: none; }
 @media screen and (min-width: 1100px) {
   body.kss-overview .kss-main .kss-overview h1 {
@@ -837,11 +840,11 @@ body.kss-overview .kss-main .kss-overview blockquote {
 body.kss-node .kss-main .kss-section {
   position: relative;
   max-width: 100%;
-  padding: 0 35px; }
+  padding: 0 31px; }
   body.kss-node .kss-main .kss-section .show_hide-content-button {
     position: absolute;
     top: 13px;
-    right: 35px;
+    right: 31px;
     display: inline-block;
     width: 22px;
     height: 22px;
@@ -883,20 +886,27 @@ body.kss-node .kss-main .kss-style {
       padding-bottom: 20px;
       padding-left: 30px;
       margin-top: 0;
-      margin-right: -35px;
-      margin-left: -35px; }
+      margin-right: -31px;
+      margin-left: -31px; }
       body.kss-node .kss-main .kss-style .kss-title.kss-title--level-1 .kss-title__permalink {
         color: #f94493; }
     body.kss-node .kss-main .kss-style .kss-title.kss-title--level-2 {
       padding: 10px 30px 10px 0;
       margin: 0;
-      font-size: 30px;
+      font-size: 35.2px;
       font-weight: 300;
       color: #313131;
       border-bottom: 1px solid #ccc; }
+    body.kss-node .kss-main .kss-style .kss-title.kss-title--level-3 {
+      padding: 10px 30px 10px 0;
+      margin: 0;
+      font-size: 24px;
+      font-weight: 400;
+      color: #666;
+      border-bottom: 1px solid #ccc; }
     body.kss-node .kss-main .kss-style .kss-title .kss-title__permalink {
       display: inline-block;
-      color: #828282;
+      color: inherit;
       text-decoration: none; }
       body.kss-node .kss-main .kss-style .kss-title .kss-title__permalink:focus, body.kss-node .kss-main .kss-style .kss-title .kss-title__permalink:hover {
         text-decoration: underline; }
@@ -1000,6 +1010,7 @@ body.kss-node .kss-main .kss-style {
     position: absolute;
     width: 21px;
     right: -23px;
+    background-color: #f8f8f8;
     color: #dcdcdc;
     font-size: 23px;
     display: inline-block;
@@ -1040,6 +1051,7 @@ body.kss-node .kss-main .kss-style {
   body.kss-node .kss-main .kss-style .kss-resizerVert {
     position: absolute;
     width: 100%;
+    background-color: #f8f8f8;
     color: #dcdcdc;
     font-size: 23px;
     display: inline-block;
@@ -1111,7 +1123,7 @@ body.kss-node .kss-main .kss-style {
       font-weight: normal; }
   body.kss-node .kss-main .kss-style.kss-markup {
     margin: -1px 0 24px 0;
-    margin-bottom: 150px; }
+    margin-bottom: 80px; }
   body.kss-node .kss-main .kss-style.kss-markup pre {
     max-width: 100%;
     padding: 10px 20px;
