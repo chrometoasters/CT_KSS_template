@@ -24,7 +24,7 @@ body.kss-overview {
                 padding-left: 31px;
                 margin-top: 0;
                 margin-right: -31px;
-                margin-bottom: 0;
+                margin-bottom: 32px0;
                 margin-left: -31px;
 
                 .kss-title__permalink {
@@ -53,27 +53,6 @@ body.kss-overview {
 
                 h1 {
                     font-size: $kss-font-size * 5;
-                }
-            }
-            @media screen and (min-width: 769px) {
-                display: flex;
-                flex-flow: row wrap;
-
-                * {
-                    flex: 1 100%;
-                }
-
-                h1 {
-                    flex: 2 50%;
-                    text-align: left;
-                    padding-top: 0;
-                    margin-right: 0;
-                    word-break: break-word;
-                }
-
-                blockquote {
-                    flex: 2 50%;
-                    margin-left: 0;
                 }
             }
         }
