@@ -19,5 +19,5 @@ kss-node --config {path-to-file}/{name-of-kss-config.json}
 - Compile styles
 
 ````bash
-npm run less
+npm run sass
 ````
