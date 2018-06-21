@@ -88,10 +88,8 @@
 
 @font-face {
     font-family: 'Graphik';
-    src: url('../fonts/graphik/Graphik-Super.eot');
-    src: url('../fonts/graphik/Graphik-Super.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/graphik/Graphik-Super.woff') format('woff'),
-        url('../fonts/graphik/Graphik-Super.ttf') format('truetype');
+    src: url('../fonts/graphik/Graphik-Super-Web.woff2') format('woff2'),
+         url('../fonts/graphik/Graphik-Super-Web.woff') format('woff');
     font-weight: 900;
     font-style: normal;
 }
@@ -107,10 +105,8 @@
 }
 @font-face {
     font-family: 'Graphik';
-    src:    url('../fonts/graphik/Graphik-Light.eot');
-    src:    url('../fonts/graphik/Graphik-Light.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/graphik/Graphik-Light.woff') format('woff'),
-            url('../fonts/graphik/Graphik-Light.ttf') format('truetype');
+    src: url('../fonts/graphik/Graphik-Light-Web.woff2') format('woff2'),
+         url('../fonts/graphik/Graphik-Light-Web.woff') format('woff');
     font-weight: 300;
     font-style: normal;
 }
