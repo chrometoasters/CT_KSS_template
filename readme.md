@@ -1,6 +1,6 @@
 # Chrometoaster Custom KSS template
 
-## Assumes use of following technolgies / approach
+## Assumes use of following technologies / approach
 
 - Use of kss-node in parent project to generate living styleguide
 
