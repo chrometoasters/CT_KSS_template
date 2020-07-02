@@ -1,5 +1,5 @@
-$(document).ready(function() {
-
+jqKss(document).ready(function() {
+    var $ = jqKss;
     var resizeWrappers = document.getElementsByClassName('kss-resizable');
 
     // Taken from Chrome responsive tool

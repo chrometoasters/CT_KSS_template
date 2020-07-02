@@ -1,4 +1,5 @@
-$(document).ready(function() {
+jqKss(document).ready(function() {
+    var $ = jqKss;
 
     $('.kss-expando').each(function(index, el) {
 

@@ -1,4 +1,5 @@
-$(document).ready(function() {
+jqKss(document).ready(function() {
+    var $ = jqKss;
     var stickyobjects = [];
 
     $('.sticky').each(function(e){

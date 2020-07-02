@@ -1,5 +1,5 @@
-$(document).ready(function() {
-
+jqKss(document).ready(function() {
+    var $ = jqKss;
 
     // add a show/hide button to all nav levels that have sub navigation
 
