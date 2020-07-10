@@ -1,4 +1,5 @@
-$(document).ready(function() {
+jqKss(document).ready(function() {
+    var $ = jqKss;
 
     $('.show-hide-js').each(function(){
        	var $dis = $(this),

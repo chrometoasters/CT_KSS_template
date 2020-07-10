@@ -1,5 +1,5 @@
-$(document).ready(function () {
-
+jqKss(document).ready(function () {
+    var $ = jqKss;
     var HeaderHeight = $('header').outerHeight() + 40;
 
     if (window.location.hash.length) {

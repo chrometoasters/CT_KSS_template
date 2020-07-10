@@ -256,10 +256,14 @@
 
     </article>
 </div>
-    <!-- Project specific scripts -->
+    <!-- Project specific scripts, including some version of jQuery -->
     {{{scripts}}}
     <!-- Styleguide scripts -->
     <script src="public/js/lib/jquery.min.js"></script>
+    <script>
+        jqKss = jQuery.noConflict( true ); // jquery 1.12.4
+    </script>
+
     <script src="public/js/kss.js"></script>
     <script src="public/js/prettify.js"></script>
     <script src="public/js/resizer.js"></script>
